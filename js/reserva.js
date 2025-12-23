@@ -418,25 +418,25 @@ fechaInput.addEventListener('input', function() {
     }
 });
 
+
 async function enviarReserva(data) {
     try {
-        const response = await fetch(
-            "https://carwash.onrender.com/reservar",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data)
-            }
-        );
+        const response = await fetch('http://127.0.0.1:5000/reservar', {
 
-        const result = await response.json();
-        console.log("Reserva guardada:", result);
-
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Reserva enviada:', result);
+            return result;
+        }
     } catch (error) {
-        console.error("Error:", error);
-        alert("Error al guardar la reserva");
+        console.error('Error al enviar reserva:', error);
     }
 }
 
