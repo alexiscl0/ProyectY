@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/reserva.css">
+    <title>Reserva Tu Turno - AutoSpa</title>
+</head>
+<body>
+    <!-- Botón para volver -->
+    <a href="carwash.html" class="back-button">
+        <i class="retroceder"></i> Volver
+    </a>
+
+    <div class="reserva-container">
+        <div class="reserva-header">
+            <div class="logo">AUTOSPA</div>
+            <h1>Reserva Tu Turno</h1>
+            <p>Completa el formulario y elige el mejor momento para tu auto</p>
+        </div>
+
+        <div class="progress-bar">
+            <div class="puntos_de_progreso active" data-step="1">
+                <div class="circulo">1</div>
+                <span class="puntos">Servicio</span>
+            </div>
+            <div class="linea_de_progreso"></div>
+            <div class="puntos_de_progreso" data-step="2">
+                <div class="circulo">2</div>
+                <span class="puntos">Fecha & Hora</span>
+            </div>
+            <div class="linea_de_progreso"></div>
+            <div class="puntos_de_progreso" data-step="3">
+                <div class="circulo">3</div>
+                <span class="puntos">Datos</span>
+            </div>
+            <div class="linea_de_progreso"></div>
+            <div class="puntos_de_progreso" data-step="4">
+                <div class="circulo">4</div>
+                <span class="puntos">Confirmación</span>
+            </div>
+        </div>
+
+        <form class="reserva-form" id="reservaForm">
+            
+            <!-- PASO 1: Selección de Servicio -->
+            <div class="form-step active" data-step="1">
+                <h2>Elige Tu Paquete</h2>
+                
+                <div class="paquetes-grid">
+                    <div class="paquete-card" data-paquete="basico" data-precio="30">
+                        <div class="paquete-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>BÁSICO</h3>
+                        <div class="paquete-precio">S/ 30</div>
+                        <p class="paquete-tiempo">20-30 minutos</p>
+                        <ul class="paquete-lista">
+                            <li><i class="fas chek-lista"></i> Lavado exterior completo</li>
+                            <li><i class="fas chek-lista"></i> Secado a mano</li>
+                            <li><i class="fas chek-lista"></i> Limpieza de llantas</li>
+                            <li><i class="fas chek-lista"></i> Aspirado básico</li>
+                        </ul>
+                        <button type="button" class="btn-seleccionar">Seleccionar</button>
+                    </div>
+
+                    <div class="paquete-card destacado" data-paquete="premium" data-precio="60">
+                        <div class="popular">MÁS POPULAR</div>
+                        <div class="paquete-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>PREMIUM</h3>
+                        <div class="paquete-precio">S/ 60</div>
+                        <p class="paquete-tiempo">45-60 minutos</p>
+                        <ul class="paquete-lista">
+                            <li><i class="fas chek-lista"></i> Lavado exterior e interior</li>
+                            <li><i class="fas chek-lista"></i> Encerado básico</li>
+                            <li><i class="fas chek-lista"></i> Limpieza de tapicería</li>
+                            <li><i class="fas chek-lista"></i> Brillo en llantas</li>
+                            <li><i class="fas chek-lista"></i> Aromatización</li>
+                        </ul>
+                        <button type="button" class="btn-seleccionar">Seleccionar</button>
+                    </div>
+
+                    <div class="paquete-card" data-paquete="deluxe" data-precio="120">
+                        <div class="paquete-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>DELUXE</h3>
+                        <div class="paquete-precio">S/ 120</div>
+                        <p class="paquete-tiempo">90-120 minutos</p>
+                        <ul class="paquete-lista">
+                            <li><i class="fas chek-lista"></i> Detallado completo</li>
+                            <li><i class="fas chek-lista"></i> Pulido de pintura</li>
+                            <li><i class="fas chek-lista"></i> Encerado premium</li>
+                            <li><i class="fas chek-lista"></i> Tratamiento de cuero</li>
+                            <li><i class="fas chek-lista"></i> Pulido de faros</li>
+                        </ul>
+                        <button type="button" class="btn-seleccionar">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2: Fecha y Hora -->
+            <div class="form-step" data-step="2">
+                <h2>Selecciona Fecha y Hora</h2>
+                
+                <div class="datetime-grid">
+                    <div class="form-group">
+                        <label for="fecha">
+                            <i class="fas fa-calendar-alt"></i> Fecha
+                        </label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <i class="fas fa-rapidez"></i> Hora Disponible
+                        </label>
+                        <div class="times">
+                            <button type="button" class="time" data-time="08:00">08:00 AM</button>
+                            <button type="button" class="time" data-time="09:00">09:00 AM</button>
+                            <button type="button" class="time" data-time="10:00">10:00 AM</button>
+                            <button type="button" class="time" data-time="11:00">11:00 AM</button>
+                            <button type="button" class="time" data-time="12:00">12:00 PM</button>
+                            <button type="button" class="time" data-time="13:00">01:00 PM</button>
+                            <button type="button" class="time" data-time="14:00">02:00 PM</button>
+                            <button type="button" class="time" data-time="15:00">03:00 PM</button>
+                            <button type="button" class="time" data-time="16:00">04:00 PM</button>
+                            <button type="button" class="time" data-time="17:00">05:00 PM</button>
+                            <button type="button" class="time" data-time="18:00">06:00 PM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-step" data-step="3">
+                <h2>Tus Datos</h2>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">
+                            <i class="fas fa-user"></i> Nombre Completo
+                        </label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Carlos Martinez" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">
+                            <i class="fas fa-phone"></i> Teléfono
+                        </label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+51 999 999 999" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Correo Electrónico
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vehiculo">
+                            <i class="fas fa-car"></i> Tipo de Vehículo
+                        </label>
+                        <select id="vehiculo" name="vehiculo" required>
+                            <option value="">Selecciona tu vehículo</option>
+                            <option value="sedan">Sedán</option>
+                            <option value="suv">SUV</option>
+                            <option value="camioneta">Camioneta</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="coupe">Coupé</option>
+                            <option value="van">Van</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="modelo">
+                            <i class="fas fa-car-side"></i> Marca y Modelo
+                        </label>
+                        <input type="text" id="modelo" name="modelo" placeholder="Toyota Corolla 2020" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="comentarios">
+                            <i class="fas fa-comment"></i> Comentarios (Opcional)
+                        </label>
+                        <textarea id="comentarios" name="comentarios" rows="3" placeholder="Alguna observación especial..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="4">
+                <h2>Confirma Tu Reserva</h2>
+                
+                <div class="resumen-reserva">
+                    <div class="resumen-seccion">
+                        <h3><i class="fas fa-box"></i> Paquete Seleccionado</h3>
+                        <div class="resumen-item">
+                            <span id="resumen-paquete">Premium</span>
+                            <span id="resumen-precio" class="precio-resumen">S/ 60</span>
+                        </div>
+                    </div>
+
+                    <div class="resumen-seccion">
+                        <h3><i class="fas calendar"></i> Fecha y Hora</h3>
+                        <div class="resumen-item">
+                            <span id="resumen-fecha">15 de Enero, 2025</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span id="resumen-hora">10:00 AM</span>
+                        </div>
+                    </div>
+
+                    <div class="resumen-seccion">
+                        <h3><i class="fas fa-user-circle"></i> Datos del Cliente</h3>
+                        <div class="resumen-item">
+                            <strong>Nombre:</strong> <span id="resumen-nombre">Juan Pérez</span>
+                        </div>
+                        <div class="resumen-item">
+                            <strong>Teléfono:</strong> <span id="resumen-telefono">+51 999 999 999</span>
+                        </div>
+                        <div class="resumen-item">
+                            <strong>Email:</strong> <span id="resumen-email">juan@email.com</span>
+                        </div>
+                        <div class="resumen-item">
+                            <strong>Vehículo:</strong> <span id="resumen-vehiculo">Toyota Corolla 2020</span>
+                        </div>
+                    </div>
+
+                    <div class="total-seccion">
+                        <div class="total-item">
+                            <span>Total a Pagar:</span>
+                            <span class="total-precio" id="total-precio">S/ 60</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="politicas">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="acepto-politicas" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">
+                            Acepto los <a href="#" onclick="return false;">términos y condiciones</a> 
+                            y la <a href="#" onclick="return false;">política de cancelación</a>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form_navegacion">
+                <button type="button" class="btn-nav btn-prev" id="btnPrev">
+                    <i class="retroceder"></i> Anterior
+                </button>
+                <button type="button" class="btn-nav btn-next" id="btnNext">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </button>
+                <button type="submit" class="btn-nav btn-submit" id="btnSubmit" style="display: none;">
+                    <i class="fas chek-lista"></i> Confirmar Reserva
+                </button>
+            </div>
+        </form>
+
+        <div class="modal-success" id="modalSuccess">
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas chek-lista-circle"></i>
+                </div>
+                <h2>¡Reserva Confirmada!</h2>
+                <p>Tu reserva ha sido registrada exitosamente.</p>
+                <p class="codigo-reserva">Código de reserva: <strong id="codigoReserva">RSV-00123</strong></p>
+                <p class="info-confirmacion">Hemos enviado los detalles a tu correo electrónico.</p>
+                <button type="button" class="btn-modal" onclick="window.location.href='carwash.html'">
+                    Volver al Inicio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/reserva.js"></script>
+</body>
+</html>
