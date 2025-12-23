@@ -14,6 +14,13 @@ MYSQL_CONFIG = {
 }
 
 DB_NAME = "carwash"
+@app.route("/init-db")
+def init_db_route():
+    try:
+        init_db()
+        return "DB Inicializada", 200
+    except Exception as e:
+        return f"Error: {e}", 500
 
 def init_db():
     conn = mysql.connector.connect(**MYSQL_CONFIG)
@@ -89,5 +96,4 @@ def test_db():
         return f"DB ERROR: {e}", 500
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
