@@ -1,32 +1,26 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import os
 import mysql.connector
 
 app = Flask(__name__)
 CORS(app)
 
 MYSQL_CONFIG = {
-    "host": os.environ["MYSQLHOST"],
-    "user": os.environ["MYSQLUSER"],
-    "password": os.environ["MYSQLPASSWORD"],
-    "port": int(os.environ["MYSQLPORT"])
+    "host": "localhost",
+    "user": "root",
+    "password": "",  
+    "port": 3306
 }
 
 DB_NAME = "carwash"
-@app.route("/init-db")
-def init_db_route():
-    try:
-        init_db()
-        return "DB Inicializada", 200
-    except Exception as e:
-        return f"Error: {e}", 500
 
 def init_db():
-    conn = mysql.connector.connect(**MYSQL_CONFIG)
+    conn = mysql.connector.connect(**MYSQL_CONFIG, database="carwash")
     cursor = conn.cursor()
 
-    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+    cursor.execute(f"""
+        CREATE DATABASE IF NOT EXISTS {DB_NAME}
+    """)
     cursor.execute(f"USE {DB_NAME}")
 
     cursor.execute("""
@@ -55,7 +49,10 @@ def reservar():
     try:
         data = request.get_json()
 
-        conn = mysql.connector.connect(**MYSQL_CONFIG, database=DB_NAME)
+        conn = mysql.connector.connect(
+            **MYSQL_CONFIG,
+            database=DB_NAME
+        )
         cursor = conn.cursor()
 
         sql = """
@@ -86,14 +83,6 @@ def reservar():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/test-db")
-def test_db():
-    try:
-        conn = mysql.connector.connect(**MYSQL_CONFIG, database=DB_NAME)
-        conn.close()
-        return "DB OK", 200
-    except Exception as e:
-        return f"DB ERROR: {e}", 500
-
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    init_db()
+    app.run(debug=True)
