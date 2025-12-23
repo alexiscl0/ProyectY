@@ -417,3 +417,26 @@ fechaInput.addEventListener('input', function() {
         });
     }
 });
+
+async function enviarReserva(data) {
+    try {
+        const response = await fetch(
+            "https://carwash.onrender.com/reservar",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            }
+        );
+
+        const result = await response.json();
+        console.log("Reserva guardada:", result);
+
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error al guardar la reserva");
+    }
+}
+
