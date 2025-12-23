@@ -421,7 +421,7 @@ fechaInput.addEventListener('input', function() {
 
 async function enviarReserva(data) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/reservar', {
+        const response = await fetch('proyecty-production.up.railway.app', {
 
             method: 'POST',
             headers: {
