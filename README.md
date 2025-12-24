@@ -22,3 +22,4 @@ utilizada durante el desarrollo y las pruebas en entorno local.
 Debido a las limitaciones de GitHub Pages, que solo permite el despliegue de aplicaciones
 estáticas (HTML, CSS y JavaScript), la base de datos no se encuentra activa en la versión
 hospedada, pero forma parte del diseño y desarrollo completo del proyecto.
+<img width="1501" height="562" alt="imagen" src="https://github.com/user-attachments/assets/0f9db354-7249-4177-8ccf-b239b25543be" />
